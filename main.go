@@ -52,11 +52,7 @@ func main() {
 			}
 			*stateFile = filepath.Join(dir, "moggio.state")
 		default:
-			dir, err := os.Getwd()
-if err != nil {
-	log.Fatal(err)
-}
-*stateFile = filepath.Join(dir, ".moggio.state")
+			*stateFile = filepath.Join(os.Getenv("HOME"), ".moggio.state")
 		}
 	}
 	log.Fatal(server.ListenAndServe(*stateFile, *flagAddr, *flagDev))
